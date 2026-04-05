@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KruSom | Portfolio</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.28/build/spline-viewer.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Prompt', 'sans-serif'],
+          },
+          colors: {
+            earth: {
+              100: '#F5F5F0', // สีพื้นหลังครีมอ่อนๆ
+              500: '#C29B62', // สีทอง/น้ำตาลประวัติศาสตร์
+              800: '#2C3E2D', // สีเขียวเข้มภูมิศาสตร์
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 5rem;
+    }
+
+    body {
+      background-color: #FAFAFA;
+      color: #333333;
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .fade-up.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    spline-viewer::part(logo) {
+      display: none;
+    }
+  </style>
+</head>
+
+<body class="antialiased selection:bg-earth-500 selection:text-white">
+
+  <nav class="fixed w-full z-50 glass-card border-b border-gray-100">
+    <div class="max-w-6xl mx-auto flex justify-between items-center p-4 px-6">
+      <h1 class="font-bold text-xl text-earth-800 tracking-wide">Kru<span class="text-earth-500">Som</span></h1>
+      
+      <div class="hidden md:flex space-x-6 font-medium text-gray-600 items-center">
+        <a href="#about" class="hover:text-earth-500 transition">เกี่ยวกับฉัน</a>
+        <a href="#skills" class="hover:text-earth-500 transition">ทักษะ</a>
+        <a href="#experience" class="hover:text-earth-500 transition">ประสบการณ์</a>
+        <a href="#work" class="hover:text-earth-500 transition">นวัตกรรม</a>
+        <a href="#contact" class="px-4 py-2 bg-earth-800 text-white rounded-full hover:bg-earth-500 transition">ติดต่อ</a>
+      </div>
+
+      <button id="menu-btn" class="block md:hidden focus:outline-none text-earth-800 p-2">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-40 hidden opacity-0 transition-opacity duration-300"></div>
+
+  <div id="sidebar" class="fixed top-0 right-0 h-full w-64 bg-white z-50 transform translate-x-full transition-transform duration-300 ease-in-out shadow-2xl flex flex-col md:hidden">
+    <div class="p-6 flex justify-end border-b border-gray-100">
+      <button id="close-btn" class="focus:outline-none text-gray-400 hover:text-earth-500 p-2">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    
+    <div class="flex flex-col space-y-6 p-8 text-lg font-medium text-gray-600">
+      <a href="#about" class="mobile-link hover:text-earth-500 transition">เกี่ยวกับฉัน</a>
+      <a href="#skills" class="mobile-link hover:text-earth-500 transition">ทักษะ</a>
+      <a href="#experience" class="mobile-link hover:text-earth-500 transition">ประสบการณ์</a>
+      <a href="#work" class="mobile-link hover:text-earth-500 transition">นวัตกรรม</a>
+      <a href="#contact" class="mobile-link text-center px-4 py-3 bg-earth-800 text-white rounded-full hover:bg-earth-500 transition mt-4">ติดต่อฉัน</a>
+    </div>
+  </div>
+
+  <section class="pt-36 pb-12 px-6 bg-earth-100 text-center">
+    <div class="max-w-3xl mx-auto fade-up show">
+      <span class="text-earth-500 font-semibold tracking-wider mb-2 uppercase text-sm">Portfolio</span>
+      <h1 class="text-5xl md:text-7xl font-bold text-earth-800 drop-shadow-sm mb-6">ครูอรพรรณ ศรีมาก</h1>
+      <p class="text-xl text-gray-700 bg-white/60 px-6 py-2 rounded-full backdrop-blur-sm inline-block shadow-sm">
+        🌍 สังคมศึกษา
+      </p>
+      <div class="mt-10 flex flex-wrap justify-center gap-4">
+        <a href="#work" class="px-8 py-3 bg-earth-800 text-white rounded-full hover:bg-earth-500 shadow-lg transition transform hover:-translate-y-1">
+          ชมผลงาน
+        </a>
+        <a href="#about" class="px-8 py-3 bg-white text-earth-800 rounded-full hover:bg-gray-50 shadow-lg transition transform hover:-translate-y-1 border border-gray-200">
+          รู้จักฉันเพิ่มเติม
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-earth-100 pb-24 px-6">
+    <div class="max-w-6xl mx-auto h-[400px] md:h-[600px] rounded-3xl overflow-hidden shadow-xl relative bg-white border border-gray-200 fade-up">
+      <spline-viewer 
+        url="https://prod.spline.design/Brb-o2zEGgXIzTb5/scene.splinecode" 
+        class="w-full h-full cursor-grab active:cursor-grabbing">
+      </spline-viewer>
+    </div>
+  </section>
+
+  <section id="about" class="py-24 px-6 max-w-5xl mx-auto fade-up">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-earth-800 mb-6">เกี่ยวกับฉัน</h2>
+      <div class="w-16 h-1 bg-earth-500 mx-auto rounded-full"></div>
+    </div>
+    
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="relative group mx-auto w-64 md:w-full max-w-sm">
+        <div class="absolute inset-0 bg-earth-500 rounded-2xl transform translate-x-4 translate-y-4 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-300"></div>
+        
+        <img 
+          src="assets/logo.png" 
+          alt="ครูอรพรรณ ศรีมาก" 
+          class="relative rounded-2xl shadow-lg object-cover w-full aspect-[4/5] z-10 border-4 border-white"
+        >
+      </div>
+
+      <div class="text-left">
+        <h3 class="text-2xl font-semibold text-gray-800 mb-4">นางสาวอรพรรณ ศรีมาก <span class="text-earth-500 text-lg">(ครูส้ม)</span></h3>
+        <p style="text-indent: 2em;" class="text-gray-600 leading-relaxed text-lg"> 
+          ข้าพเจ้าเป็นครูผู้สอนวิชาสังคมศึกษา ที่มีความเชื่อมั่นในการเรียนรู้แบบ <strong class="text-earth-800">Active Learning</strong> 
+          และการประยุกต์ใช้เทคโนโลยี เช่น <strong class="text-earth-800">AI และสื่อดิจิทัล</strong> เพื่อเปิดโลกทัศน์ให้ผู้เรียน 
+        </p>
+        <p style="text-indent: 2em;" class="text-gray-600 leading-relaxed text-lg">
+          เป้าหมายของข้าพเจ้าคือการพัฒนาเด็กไทยในศตวรรษที่ 21 ให้มีทักษะการคิดวิเคราะห์ เข้าใจรากเหง้าทางประวัติศาสตร์ และเติบโตเป็นพลเมืองโลก (Global Citizen) ที่ดี
+        </p>
+        
+        <div class="mt-8 pt-6 border-t border-gray-200">
+          <ul class="space-y-3 text-gray-600">
+            <li><strong class="text-earth-800 w-24 inline-block">การศึกษา</strong> ปริญญาตรี นิติศาสตร์ เกียรตินิยมอันดับ 2</li>
+            <li><strong class="text-earth-800 w-24 inline-block"></strong> ประกาศนียบัตรบัณฑิต วิชาชีพครู GPA 3.74</li>
+            <li><strong class="text-earth-800 w-24 inline-block">วิชาที่สอน:</strong> สังคมศึกษา</li>
+            <li><strong class="text-earth-800 w-24 inline-block">ที่ทำงาน:</strong> โรงเรียนลาซาลโชติรวีนครสวรรค์</li>
+            <li><strong class="text-earth-800 w-24 inline-block">อายุงาน:</strong> 5ปี</li>
+            <li><strong class="text-earth-800 w-24 inline-block">อีเมล:</strong> orangeonly.137@gmail.com</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="py-24 bg-white fade-up">
+    <div class="max-w-5xl mx-auto text-center px-6">
+      <h2 class="text-3xl font-bold text-earth-800 mb-6">ทักษะความเชี่ยวชาญ</h2>
+      <div class="w-16 h-1 bg-earth-500 mx-auto mb-12 rounded-full"></div>
+
+      <div class="flex flex-wrap justify-center gap-4">
+        <span class="bg-earth-100 text-earth-800 border border-earth-500/30 px-6 py-3 rounded-full text-sm font-medium shadow-sm hover:bg-earth-500 hover:text-white transition cursor-default">🌍 Active Learning</span>
+        <span class="bg-earth-100 text-earth-800 border border-earth-500/30 px-6 py-3 rounded-full text-sm font-medium shadow-sm hover:bg-earth-500 hover:text-white transition cursor-default">🤖 AI เพื่อการศึกษา</span>
+        <span class="bg-earth-100 text-earth-800 border border-earth-500/30 px-6 py-3 rounded-full text-sm font-medium shadow-sm hover:bg-earth-500 hover:text-white transition cursor-default">📱 สร้างสื่อดิจิทัล</span>
+        <span class="bg-earth-100 text-earth-800 border border-earth-500/30 px-6 py-3 rounded-full text-sm font-medium shadow-sm hover:bg-earth-500 hover:text-white transition cursor-default">💻 Google Workspace</span>
+        <span class="bg-earth-100 text-earth-800 border border-earth-500/30 px-6 py-3 rounded-full text-sm font-medium shadow-sm hover:bg-earth-500 hover:text-white transition cursor-default">🎨 Canva & Video Editing</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="py-24 px-6 max-w-4xl mx-auto fade-up">
+    <h2 class="text-3xl font-bold text-center text-earth-800 mb-6">ประสบการณ์</h2>
+    <div class="w-16 h-1 bg-earth-500 mx-auto mb-12 rounded-full"></div>
+
+    <div class="border-l-4 border-earth-500/30 pl-8 space-y-8 relative ml-4 md:ml-0">
+      
+      <div class="relative glass-card p-6 rounded-2xl border border-gray-100">
+        <div class="absolute -left-[45px] top-6 bg-earth-500 h-6 w-6 rounded-full border-4 border-white shadow"></div>
+        <span class="text-earth-500 font-semibold text-sm">2565-ปัจจุบัน</span>
+        <h3 class="text-xl font-bold text-gray-800 mt-1">ครูผู้สอนวิชาสังคมศึกษา</h3>
+        <p class="text-gray-600 mt-2">โรงเรียนลาซาลโชติรวีนครสวรรค์ | รับผิดชอบการสอนระดับชั้นประถมศึกษาปีที่4-6 </p>
+      </div>
+
+      <div class="relative glass-card p-6 rounded-2xl border border-gray-100">
+        <div class="absolute -left-[45px] top-6 bg-earth-800 h-6 w-6 rounded-full border-4 border-white shadow"></div>
+        <span class="text-earth-500 font-semibold text-sm">ปี 2568</span>
+        <h3 class="text-xl font-bold text-gray-800 mt-1">ครูผู้สอนกิจกรรมชุมนุม บอร์ดเกมการศึกษา</h3>
+        <p class="text-gray-600 mt-2">ผู้เรียนได้นำเนื้อหาในวิชาที่ตนเองสนใจมาพัมนาเป็นบอร์ดเกมการศึกษา</p>
+      </div>
+
+      <div class="relative glass-card p-6 rounded-2xl border border-gray-100">
+        <div class="absolute -left-[45px] top-6 bg-gray-400 h-6 w-6 rounded-full border-4 border-white shadow"></div>
+        <span class="text-gray-500 font-semibold text-sm">ปี 2566</span>
+        <h3 class="text-xl font-bold text-gray-800 mt-1">ครูผู้ฝึกสอนนักเรียนแข่งขันวันการศึกษาเอกชน ครั้งที่9</h3>
+        <p class="text-gray-600 mt-2">ครูผู้ฝึกสอนนักเรียนแข่งขันวันการศึกษาเอกชน กลุ่มสาระสังคมศึกษา ฯ รายการ เล่านิทานคุณธรรม ป.4-6 ชนะเลิศ</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="work" class="py-24 bg-earth-100 fade-up">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center text-earth-800 mb-6">นวัตกรรม</h2>
+      <div class="w-16 h-1 bg-earth-500 mx-auto mb-12 rounded-full"></div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 group flex flex-col">
+          <div class="h-48 bg-gray-200 overflow-hidden relative shrink-0">
+            <img src="assets/p1.png" alt="เว็บไซต์ สำรวจโลกกับครูส้ม" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+            <div class="absolute inset-0 bg-earth-800/20 group-hover:bg-transparent transition duration-500"></div>
+          </div>
+          <div class="p-6 flex flex-col grow">
+            <h3 class="text-xl font-bold text-gray-800 mb-2">เว็บไซต์ สำรวจโลกกับครูส้ม</h3>
+            <p class="text-gray-600 text-sm mb-6 grow">ระบบนี้ช่วยให้ผู้เรียนเข้าถึงทวีปต่างๆ ในโลก (รองรับstreet view)</p>
+            <a href="https://www.kruearth.com/worldsocial/" target="_blank" class="inline-flex items-center justify-center px-5 py-2.5 bg-earth-800 text-white text-sm font-medium rounded-full hover:bg-earth-500 transition transform hover:-translate-y-0.5 shadow-md w-full sm:w-auto self-start">
+              เข้าเว็บไซต์
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 group flex flex-col">
+          <div class="h-48 bg-gray-200 overflow-hidden relative shrink-0">
+            <img src="assets/p2.png" alt="เว็บไซต์ เกมจำลองการบริหารประเทศ" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+            <div class="absolute inset-0 bg-earth-800/20 group-hover:bg-transparent transition duration-500"></div>
+          </div>
+          <div class="p-6 flex flex-col grow">
+            <h3 class="text-xl font-bold text-gray-800 mb-2">เกมจำลองการบริหารประเทศ</h3>
+            <p class="text-gray-600 text-sm mb-6 grow">เกมนี้ช่วยให้ผู้เรียนเกิดกระบวนการคิดอย่างเป็นขั้นตอน</p>
+            <a href="https://www.kruearth.com/nationleader/" target="_blank" class="inline-flex items-center justify-center px-5 py-2.5 bg-earth-800 text-white text-sm font-medium rounded-full hover:bg-earth-500 transition transform hover:-translate-y-0.5 shadow-md w-full sm:w-auto self-start">
+              เข้าเว็บไซต์
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 group flex flex-col">
+          <div class="h-48 bg-gray-200 overflow-hidden relative shrink-0">
+            <img src="assets/p3.png" alt="นวัตกรรม & สื่อ AI" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+            <div class="absolute inset-0 bg-earth-800/20 group-hover:bg-transparent transition duration-500"></div>
+          </div>
+          <div class="p-6 flex flex-col grow">
+            <h3 class="text-xl font-bold text-gray-800 mb-2">ZEP QUIZ ปรัชญาเศรษฐกิจพอเพียง</h3>
+            <p class="text-gray-600 text-sm mb-6 grow">เป็นส่วนหนึ่งของนวัตกรรมที่นำบทเรียนมาประยุกต์ใช้กับเทคโนโลยี</p>
+            <a href="https://quiz.zep.us/th/play/wzYMeP" target="_blank" class="inline-flex items-center justify-center px-5 py-2.5 bg-earth-800 text-white text-sm font-medium rounded-full hover:bg-earth-500 transition transform hover:-translate-y-0.5 shadow-md w-full sm:w-auto self-start">
+              เข้าเว็บไซต์
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-24 text-center fade-up bg-white">
+    <div class="max-w-3xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-earth-800 mb-6">ช่องทางการติดต่อ</h2>
+      <div class="w-16 h-1 bg-earth-500 mx-auto mb-10 rounded-full"></div>
+      
+      <div class="glass-card p-10 rounded-3xl border border-gray-100 shadow-sm">
+        <p class="text-lg text-gray-600 mb-4 flex justify-center items-center gap-3">
+          <span class="text-2xl">📧</span> orangeonly.137@gmail.com
+        </p>
+        
+      </div>
+    </div>
+  </section>
+
+  <footer class="text-center py-8 bg-earth-800 text-earth-100">
+    <p class="opacity-80">© 2026 Krusom | Social Studies Teacher Portfolio.</p>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // 1. Scroll Animation
+      const elements = document.querySelectorAll('.fade-up');
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            entry.target.classList.add('show');
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+      });
+      elements.forEach(el => observer.observe(el));
+
+      // 2. Mobile Sidebar Toggle Logic
+      const menuBtn = document.getElementById('menu-btn');
+      const closeBtn = document.getElementById('close-btn');
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('sidebar-overlay');
+      const mobileLinks = document.querySelectorAll('.mobile-link');
+
+      function openSidebar() {
+        overlay.classList.remove('hidden');
+        // บังคับให้เบราว์เซอร์วาดหน้าจอใหม่ก่อนเปลี่ยน opacity เพื่อให้แอนิเมชันทำงาน
+        void overlay.offsetWidth; 
+        overlay.classList.remove('opacity-0');
+        sidebar.classList.remove('translate-x-full');
+      }
+
+      function closeSidebar() {
+        overlay.classList.add('opacity-0');
+        sidebar.classList.add('translate-x-full');
+        // รอให้แอนิเมชันจบ (300ms) แล้วค่อยซ่อน overlay
+        setTimeout(() => {
+          overlay.classList.add('hidden');
+        }, 300);
+      }
+
+      // ผูก Event Listener
+      menuBtn.addEventListener('click', openSidebar);
+      closeBtn.addEventListener('click', closeSidebar);
+      overlay.addEventListener('click', closeSidebar); // กดที่พื้นหลังเพื่อปิด
+      
+      // กดลิงก์ในเมนูแล้วให้ปิด Sidebar อัตโนมัติ
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', closeSidebar);
+      });
+    });
+  </script>
+
+</body>
+</html>
